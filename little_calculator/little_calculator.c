@@ -1,27 +1,60 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//main method
-/* *********************************
- * Umrechnung von Binär -> Dezimahl*
- *1010 = 2^1 + 2^3 = 10            *
- *  Dezimal -> Binär               *
- * 6 : 2 = 3 | 0                   *
- * 3 : 2 = 1 Rest 1 | 1            *
- * 1 : 2 = 0 Rest 1 | 1            *
- * -> 110                          *
- ***********************************/
+float input_zahl1();
+float input_zahl2();
+char input_operation();
+float berechnung(int zahla, int zahlb, char operation);
 
-
-int main(){
-    float a, b;
-
-    printf("Taschenrechner\n");
-    printf("\nGeben Sie bitte die 1. Zahl ein: ");
-    scanf("%f", &a);
-    printf("\nGeben sie bitte die 2. Zahl ein: ");
-    scanf("%f", &b);
-    printf("\nDie Summe ergibt: %.2f\n", a+b);
+int main() {
+    float ergebnis;
+    ergebnis = berechnung(input_zahl1(), input_zahl2(), input_operation());
+    printf("\n%f", ergebnis);
     return 0;
 
+}
+
+float input_zahl1() {
+    float a;
+    printf("Wie lautet die erste Zahl?:        ");
+    scanf("%f", &a);
+    return a;
+}
+
+char input_operation() {
+    char c;
+    printf("Welche Operation wird gewuenscht?: ");
+    scanf("%s", &c);
+    return c;
+}
+
+float input_zahl2() {
+    float b;
+    printf("Wie lautet die zweite Zahl?:       ");
+    scanf("%f", &b);
+    return b;
+}
+
+float berechnung(int zahla, int zahlb, char operation) {
+    float ergebnis;
+    switch(operation) {
+        case '+': ergebnis = zahla + zahlb;
+        break;
+        case '-': ergebnis = zahla - zahlb;
+        break;
+        case '*': ergebnis = zahla * zahlb;
+        break;
+        case '/': ergebnis = zahla / zahlb;
+        break;
+        case '|': ergebnis = zahla | zahlb;
+        break;
+        case '&': ergebnis = zahla & zahlb;
+        break;
+        case '^': ergebnis = zahla ^ zahlb;
+        break;
+        default:  printf("falsches ergebnis");
+        return 0;
+        break;
+    }
+    return ergebnis;
 }
