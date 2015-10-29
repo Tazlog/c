@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+int menu();
+void how_to_play();
+void clear_console();
+
+int main()
+{
+   if(!menu()) {
+        return 0;
+    }
+    return 0;
+}
+
+/*Displays the menu screen options*/
+int menu() {
+    char temp;
+    int menu_choice = 1;
+    char hl = 174;
+    char hr = 175;
+    printf("Tic-Tac-Toe Version 0.1\n\n");
+    printf("%c%c%c Menu %c%c%c\n", hl, hl, hl, hr, hr, hr);
+    printf("1: Play with X\n");
+    printf("2: Play with 0\n");
+    printf("3: How To Play\n");
+    printf("4: Exit");
+    printf("Make a choice :) :");
+    scanf("%d%c", &menu_choice, &temp);
+
+    switch(menu_choice) {
+        case 1:     return 1;
+                    break;
+        case 2:     return 2;
+                    break;
+        case 3:     how_to_play();
+                    break;
+        case 4:     return 0;
+                    break;
+        default:    return 1;
+    }
+}
+
+void clear_console() {
+    int i;
+    int height = 24;
+    for (i = 0; i < height; i++) {
+        printf("\n");
+    }
+}
+
+void how_to_play() {
+    clear_console();
+    char temp;
+    printf("Tic-Tac-Toe is a famous 1vs1 game\n");
+    printf("It is played in a 3 by 3 grid\n\n");
+    printf("\t   |   |   \n");
+    printf("\t---|---|---\n");
+    printf("\t   |   |   \n");
+    printf("\t---|---|---\n");
+    printf("\t   |   |   \n\n\n");
+
+    printf("Every Player has a different kind of character he uses (X or 0)\n");
+    printf("You can choose an empty square to fill it\n\n");
+    printf("\t X | 0 |   \n");
+    printf("\t---|---|---\n");
+    printf("\t   | X |   \n");
+    printf("\t---|---|---\n");
+    printf("\t   |   |   \n\n\n");
+    printf("After that the turn is on the next player\n");
+
+    printf("The Player who has 3 X or 0 in one row wins :)\n\n");
+    printf("\t X | 0 |   \n");
+    printf("\t---|---|---\n");
+    printf("\t 0 | X |   \n");
+    printf("\t---|---|---\n");
+    printf("\t   |   | X \n\n\n");
+
+    printf("Press any key to go back to menu");
+    if(scanf("%c", &temp)) {
+        clear_console();
+        menu();
+    }
+}
+
+
+
+
